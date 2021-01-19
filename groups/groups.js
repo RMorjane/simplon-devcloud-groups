@@ -9,27 +9,44 @@ let make_groups = document.getElementById("make_groups")
 let tab_list = document.getElementById("tab_list")
 let tab_groups = document.getElementById("tab_groups")
 
-add_student.addEventListener("click",function(){
+add_student.addEventListener("click",e=>{
 
     if(nom.value.trim()=="") {
         alert("Veuillez saisir le prénom de l'Etudiant SVP !!!")
     }
     else{
         saveList.push(nom.value)
+
         let tr_list = document.createElement("tr")
-        tr_list.innerHTML =`<td>${nom.value}</td>
-                    <td><a href="#" onclick=remove(this)>X</a></td>`    
+
+        let td_name = document.createElement("td")
+        td_name.innerText = nom.value
+
+        let a = document.createElement("a")
+        a.setAttribute("href","#")
+        a.innerText = "X"
+
+        a.addEventListener("click",e=>{
+            let row = e.target.parentNode.parentNode
+            let td_row = row.firstChild
+            let item = td_row.innerText
+            let index = saveList.indexOf(item)
+            console.log(`${index} : ${item}`)
+            saveList.splice(index,1)
+            console.log(saveList)
+            row.remove()
+        })
+
+        let td_a = document.createElement("td")
+        td_a.appendChild(a)
+
+        tr_list.appendChild(td_name)
+        tr_list.appendChild(td_a)
+
         tab_list.appendChild(tr_list)
-        nom.value = ""     
+        nom.value = ""   
     }
 })
-
-function remove(node){
-
-    let row = node.parentNode.parentNode
-    row.remove()
-
-}
 
 function print(array = []){
     str_list = ""
