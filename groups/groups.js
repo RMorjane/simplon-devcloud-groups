@@ -65,50 +65,55 @@ make_groups.addEventListener("click",function(){
             alert("Veuillet saisir un nombre entier > 0 SVP !!!")
             nb_groups.value = ""
 
-        }
+    }else{
+        if(saveList.length == 0){
+            alert("Veuillez remplir la liste des Etudiants SVP !!!")
+        }else{
+            if(Number(nb_groups.value.trim()) > saveList.length){
+                alert("Le nombre de groupes dépasse le nombre d'Etudiants !!!")
+            }else{
+                myList = saveList.slice(0,saveList.length)
 
-    else{
+                let myGroups = []
+                let max_nb_groups = Math.round(saveList.length / Number(nb_groups.value))
+                let i = 0
 
-        myList = saveList.slice(0,saveList.length)
+                if(tab_groups.hasChildNodes()) tab_groups.remove()
 
-        let myGroups = []
-        let max_nb_groups = Math.round(saveList.length / Number(nb_groups.value))
-        let i = 0
+                tab_groups = document.createElement("table")
+                tab_groups.setAttribute("id","tab_groups")
+                tab_groups.innerHTML = `<tr>
+                                            <th>Groupes</th>
+                                            <th>Etudiants</th>
+                                        </tr>`
+                content.appendChild(tab_groups)
 
-        if(tab_groups.hasChildNodes()) tab_groups.remove()
+                while(myList.length > 0){
 
-        tab_groups = document.createElement("table")
-        tab_groups.setAttribute("id","tab_groups")
-        tab_groups.innerHTML = `<tr>
-                                    <th>Groupes</th>
-                                    <th>Etudiants</th>
-                                </tr>`
-        content.appendChild(tab_groups)
+                    i++
+                    let newGroup = []
 
-        while(myList.length > 0){
+                    for(j=0;j<max_nb_groups;j++){
 
-            i++
-            let newGroup = []
+                        if(myList.length>0){
+                            let choice = Math.floor(Math.random()*myList.length)
+                            let name = myList[choice]
+                            newGroup.push(name)
+                            myList.splice(choice,1)                    
+                        }
 
-            for(j=0;j<max_nb_groups;j++){
+                    }
 
-                if(myList.length>0){
-                    let choice = Math.floor(Math.random()*myList.length)
-                    let name = myList[choice]
-                    newGroup.push(name)
-                    myList.splice(choice,1)                    
-                }
+                    let tr_groups = document.createElement("tr")
+                    tr_groups.innerHTML =  `<td>Groupe n° ${i}</td>
+                                            <td>${print(newGroup)}</td>`
+                    tab_groups.appendChild(tr_groups)
+                    myGroups.push(newGroup)
 
+                }    
+                console.log(myGroups)                 
             }
-
-            let tr_groups = document.createElement("tr")
-            tr_groups.innerHTML =  `<td>Groupe n° ${i}</td>
-                                    <td>${print(newGroup)}</td>`
-            tab_groups.appendChild(tr_groups)
-            myGroups.push(newGroup)
-
-        }    
-        console.log(myGroups)
-
+           
+        }
     }
 })
