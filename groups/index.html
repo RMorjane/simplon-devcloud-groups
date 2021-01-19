@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Groups</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+
+    <h1>My Groups</h1>
+
+    <div id="content" class="content">
+
+        <div class="field">
+
+            <label for="nom">Prénom de l'Etudiant : </label><br>
+            <input id="nom" type="text" name="nom">
+            <br><br>
+
+            <button id="add_student">Ajouter un Etudiant</button>
+
+        </div>
+        <br>
+
+        <table id="tab_list">
+            <tr>
+                <th colspan="2"> Liste des Etudiants</th>
+            </tr>
+        </table>
+        <br><br><br>
+        
+        <label for="nb_groups">Nombre de groupes : </label><br>
+        <input id="nb_groups" type="text" name="nb_groups">
+        <br><br>
+        
+        <button id="make_groups">Créer la répartition des groupes</button>
+        <br><br>
+
+        <table id="tab_groups">
+            <tr>
+                <th>Groupes</th>
+                <th>Etudiants</th>
+            </tr>
+        </table>
+
+    </div>
+
+    <script src="./groups.js"></script>
+</body>
+</html>

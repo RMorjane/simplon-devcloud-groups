@@ -1,0 +1,48 @@
+*{
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: lighter;
+    text-align: center;
+}
+
+.content{
+    display: block;
+    justify-content: space-around;
+}
+
+.field{
+    display: block;
+}
+
+input{
+    width: 200px;
+}
+
+button{
+    width: 150px;
+    margin-left: 1em;
+}
+
+table{
+    margin-left: auto;
+    margin-right: auto;
+    border-collapse: collapse;
+}
+
+th{
+    border:1px solid;
+    background-color: sandybrown;
+    font-weight: bold;
+    width: 35vh;
+}
+
+td{
+    border:1px solid;
+    background-color: skyblue;
+}
+
+a{
+    text-decoration: none;
+    color: red;
+    font-weight: bold;
+    font-size: 1.5em;
+}
